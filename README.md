@@ -23,4 +23,4 @@ shopify theme dev
 
 ## Тестовий Shopify магазин
 Посилання: https://qab00j-xy.myshopify.com/ 
-Пароль: 111111!
+Пароль: yahrte
