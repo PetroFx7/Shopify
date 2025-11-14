@@ -21,13 +21,6 @@ shopify theme dev
 ### 4. Тестування
 При завантаженні сторінки товари, що вже в кошику, не відображаються. Натискання кнопки Add to cart додає товар у кошик без перезавантаження сторінки, видаляє товар з секції Featured Products та оновлює header cart count і суму кошика динамічно.
 
-## Коміти для кожного етапу розробки
-Initial commit: створено секцію Featured Products з базовою розміткою та стилями
-Add AJAX add-to-cart functionality without page reload
-Hide products already in cart on page load
-Update header cart count dynamically on add-to-cart
-Refactor code: clean up scripts and styles, update README
-
 ## Тестовий Shopify магазин
 Посилання: https://qab00j-xy.myshopify.com/ 
 Пароль: 111111!
