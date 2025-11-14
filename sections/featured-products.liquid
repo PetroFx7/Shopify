@@ -1,0 +1,132 @@
+{% schema %}
+{
+  "name": "Featured Products",
+  "settings": [
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "Select collection"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Section title",
+      "default": "Recommended Products"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Featured Products",
+      "category": "Products"
+    }
+  ]
+}
+{% endschema %}
+
+<div class="featured-products-section">
+
+  <h2>{{ section.settings.title }}</h2>
+  <div class="products-grid" id="featured-products-grid">
+    {% if section.settings.collection != blank %}
+      {% assign products = collections[section.settings.collection].products %}
+      {% for product in products %}
+        <div class="product-card" data-variant-id="{{ product.variants.first.id }}">
+          <a href="{{ product.url }}">
+            <img src="{{ product.featured_image | img_url: '300x300' }}" alt="{{ product.title }}">
+          </a>
+          <h3>{{ product.title }}</h3>
+          <button class="add-to-cart" data-variant-id="{{ product.variants.first.id }}">
+            Add to cart — {{ product.price | money }}
+          </button>
+        </div>
+      {% endfor %}
+    {% endif %}
+  </div>
+</div>
+
+ <style>
+.featured-products-section {
+  padding: 15px;
+}
+
+.featured-products-section h2 {
+  font-size: 36px;
+  font-weight: 400;
+  margin-bottom: 15px;
+  text-align: center;
+  color: #656874; 
+}
+
+.products-grid {
+  display: grid;
+  grid-template-columns: 1fr; 
+  gap: 15px;
+}
+
+.product-card {
+  background: #fff;
+  padding: 10px;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  text-align: center;
+  overflow: hidden;
+}
+
+.product-card img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+.product-card h3 {
+  font-size: 16px;
+  margin: 10px 0;
+  min-height: auto; 
+  word-wrap: break-word; 
+}
+
+.featured-products-section .add-to-cart {
+  display: block;    
+  width: 100%;
+  max-width: 285px;
+  height: auto;         
+  padding: 12px 10px;  
+  background-color: #4b4aa5;
+  color: #fff;
+  border: none;
+  border-radius: 25px;
+  font-size: 16px;
+  font-weight: 400;
+  text-align: center;
+  line-height: 1.2em;  
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+  white-space: normal;  
+}
+
+.featured-products-section .add-to-cart:hover {
+  background-color: #464B90;
+  transform: translateY(-2px);
+}
+
+@media(min-width: 600px) {
+  .products-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .featured-products-section .add-to-cart {
+    font-size: 17px;
+  }
+}
+
+@media(min-width: 1024px) {
+  .products-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .featured-products-section .add-to-cart {
+    font-size: 18px;
+    padding: 15px 10px;
+    line-height: 1.3em;
+  }
+}
+ </style>
