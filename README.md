@@ -1,8 +1,7 @@
 # Shopify Featured Products Section
 
 ## Github репозиторій
-[https://github.com/yourusername/shopify-featured-products](https://github.com/yourusername/shopify-featured-products)
-
+https://github.com/PetroFx7/Shopify
 ## Інструкція по збірці та роботі з проектом
 
 ### 1. Клонування репозиторію
@@ -30,6 +29,5 @@ Update header cart count dynamically on add-to-cart
 Refactor code: clean up scripts and styles, update README
 
 ## Тестовий Shopify магазин
-Посилання: https://your-test-store.myshopify.com  
-Логін: testuser@example.com  
-Пароль: Test1234!
+Посилання: https://qab00j-xy.myshopify.com/ 
+Пароль: 111111!
