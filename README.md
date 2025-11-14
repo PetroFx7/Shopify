@@ -1,0 +1,35 @@
+# Shopify Featured Products Section
+
+## Github репозиторій
+[https://github.com/yourusername/shopify-featured-products](https://github.com/yourusername/shopify-featured-products)
+
+## Інструкція по збірці та роботі з проектом
+
+### 1. Клонування репозиторію
+git clone https://github.com/yourusername/shopify-featured-products.git
+cd shopify-featured-products
+
+### 2. Підготовка dev environment
+Використовуйте Shopify CLI або Theme Editor:
+shopify login --store your-test-store.myshopify.com
+shopify theme dev
+Або редагуйте тему безпосередньо через Shopify Admin → Online Store → Themes → Actions → Edit code.
+
+### 3. Додавання секції
+Секція додана у папку sections/featured-products.liquid. Для використання у шаблоні:
+{% section 'featured-products' %}
+
+### 4. Тестування
+При завантаженні сторінки товари, що вже в кошику, не відображаються. Натискання кнопки Add to cart додає товар у кошик без перезавантаження сторінки, видаляє товар з секції Featured Products та оновлює header cart count і суму кошика динамічно.
+
+## Коміти для кожного етапу розробки
+Initial commit: створено секцію Featured Products з базовою розміткою та стилями
+Add AJAX add-to-cart functionality without page reload
+Hide products already in cart on page load
+Update header cart count dynamically on add-to-cart
+Refactor code: clean up scripts and styles, update README
+
+## Тестовий Shopify магазин
+Посилання: https://your-test-store.myshopify.com  
+Логін: testuser@example.com  
+Пароль: Test1234!
