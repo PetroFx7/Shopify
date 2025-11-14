@@ -44,6 +44,53 @@
   </div>
 </div>
 
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  fetch('/cart.js')
+    .then(res => res.json())
+    .then(cart => {
+      const cartVariantIds = cart.items.map(item => item.variant_id);
+      document.querySelectorAll('.product-card').forEach(card => {
+        const variantId = parseInt(card.dataset.variantId);
+        if(cartVariantIds.includes(variantId)) {
+          card.remove();
+        }
+      });
+    });
+});
+
+document.addEventListener('click', (e) => {
+  if(e.target.classList.contains('add-to-cart')){
+    const button = e.target;
+    const variantId = parseInt(button.dataset.variantId);
+
+    fetch('/cart/add.js', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ id: variantId, quantity: 1 })
+    })
+    .then(res => res.json())
+    .then(item => {
+      const card = button.closest('.product-card');
+      if(card) card.remove();
+
+      return fetch('/cart.js');
+    })
+    .then(res => res.json())
+    .then(cart => {
+      if(window.Shopify) {
+        if(typeof Shopify.theme.jsCartUpdate === 'function'){
+          Shopify.theme.jsCartUpdate(cart);
+        }
+        const event = new CustomEvent('cart:updated', { detail: cart });
+        document.dispatchEvent(event);
+      }
+    })
+    .catch(err => console.error(err));
+  }
+});
+
+</script>
  <style>
 .featured-products-section {
   padding: 15px;
